@@ -1,0 +1,18 @@
+# Docker 実行時に生成される一時ファイルとロックファイル
+.X1-lock
+/tmp/.X11-unix/
+
+# コンテナ内の設定や海図データ（巨大かつ個人情報を含むため）
+# docker-compose.yml の volumes で指定したフォルダ名
+opencpn_data/
+
+# OS固有のゴミ
+.DS_Store
+Thumbs.db
+
+# 環境変数ファイル（もし .env を使うようになった場合のため）
+.env
+
+# VNCパスワード保存用ファイル
+.vnc/
+passwd
