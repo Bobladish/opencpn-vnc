@@ -1,0 +1,17 @@
+services:
+  opencpn:
+    build: .
+    container_name: marine-opencpn-lab
+    ports:
+      - "6901:6901"
+    environment:
+      - VNC_PASSWORD=${VNC_PASSWORD:-opencpn_default}    # ブラウザ接続時のパスワード
+      - VNC_RESOLUTION=1280x800
+      - TZ=Asia/Tokyo
+    shm_size: "1gb"          # 画面描写をスムーズにするために必要
+    volumes:
+      - opencpn_data:/root/.opencpn
+    restart: unless-stopped
+
+volumes:
+  opencpn_data:
