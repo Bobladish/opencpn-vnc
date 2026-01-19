@@ -17,3 +17,22 @@ Docker がインストールされている環境であれば、以下の 1 行�
 
 ```bash
 docker run -d -p 6901:6901 bobladish/opencpn-vnc:5.12.4
+
+## パスワードの設定とセキュリティ
+
+本イメージは、Webブラウザからのアクセスを保護するために VNC パスワードを必要とします。
+
+### 初期パスワード
+* デフォルト: `pass`
+
+### パスワードの変更方法（推奨）
+セキュリティを確保するため、以下のいずれかの方法でパスワードを変更して使用してください。
+
+#### A. docker-compose.yml を編集する
+`docker-compose.yml` 内の `VNC_PASSWORD` の値を書き換えて再起動します。
+```yaml
+environment:
+  - VNC_PASSWORD=your_new_password
+
+```bash
+docker run -d -p 6901:6901 -e VNC_PASSWORD=your_new_password bobladish/opencpn-vnc:5.12.4
